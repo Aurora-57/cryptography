@@ -14,6 +14,7 @@
 1. 遍历密钥范围：凯撒密码密钥范围为 `1~25`（26个字母，排除k=0的无加密情况）。
 2. 字符解密：对每个大写字母，执行 `(原字符ASCII码 - k) mod 26` 运算，若结果小于'A'则补26以保证字母循环。
 3. 结果输出：按格式 `k=xx: 解密文本` 输出所有结果，最终通过语义筛选得到正确答案。
+<<<<<<< HEAD
 ## 4. 程序运行结果（关键部分）
 plaintext
 k=1: MTEDBLAVXTILIAHOEXMAXVHWX
@@ -22,3 +23,5 @@ k=2: LSDCAKZUWSHZAGNWDLZUGVW
 k=20: TALKISCHEAPSHOWMETHECODE
 ...
 k=25: SZAJXRLADZOLXNJTDSADXND
+=======
+>>>>>>> c056d07f997aacc99126ef9935277a359826d7bd
