@@ -1,32 +1,16 @@
-def caesar_decrypt(ciphertext, shift):
-    """凯撒密码解密函数
-    :param ciphertext: 待解密密文（大写字母）
-    :param shift: 偏移量（密钥k）
-    :return: 解密后的明文
-    """
-    plaintext = ""
-    for char in ciphertext:
-        if char.isalpha() and char.isupper():
-            # 对大写字母进行解密偏移计算
-            plaintext += chr((ord(char) - shift - ord('A')) % 26 + ord('A'))
-        else:
-            # 非字母字符保持不变
-            plaintext += char
-    return plaintext
+# Lab1 凯撒密码解密实验报告
 
-if __name__ == "__main__":
-    # 题目给定的密文
-    cipher = "NUFECMWBYUJMBIQGYNBYWIXY"
-    
-    print("穷举法破解凯撒密码（k=1~25）：")
-    print("=" * 50)
-    # 遍历所有可能的密钥k（1~25）
-    for k in range(1, 26):
-        result = caesar_decrypt(cipher, k)
-        print(f"k={k:<2} : {result}")
-    
-    print("=" * 50)
-    # 正确结果说明（在代码注释中体现）
-    print("正确密钥 k=11")
-    print("解密后明文：THECIPHERHEREWILLBEEASYTOCRACK")
-    print("判断依据：该明文为有意义的英文句子，其余k值对应结果均为无意义字符组合")
+## 学号姓名
+2024010018田振伟
+
+## 实验思路
+1.  凯撒密码原理：凯撒密码是经典的单表替换加密算法，加密时将明文中的每个字母按固定偏移量k向后移位，解密时对密文执行反向的向前移位，即可还原出明文。
+2.  穷举法解密逻辑：由于凯撒密码的密钥k取值范围仅为1~25，因此可以遍历所有可能的k值，对密文逐一执行解密操作，得到全部25种可能的明文结果。
+3.  正确结果判断规则：遍历所有解密结果后，只有符合英文自然语言语义的完整句子，才是正确的明文；其余无意义的乱序字母组合均为错误结果。
+
+## 实验结果
+1.  正确密钥k：20
+2.  解密后的明文：TALKISCHEAPSHOWMETHECODE
+
+## 结果判断依据
+遍历k=1~25的所有解密结果后，仅当k=20时，解密结果为符合英文语义的完整句子（对应原句Talk is cheap, show me the code），其余k值对应的结果均为无意义的乱序字母组合，因此确定该结果为正确明文。
