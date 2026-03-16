@@ -12,28 +12,15 @@
 - 编程语言：Python 3.x
 - 开发工具：VS Code
 - 密文： NUFECMWBYUJMBIQGYNBYWIXY 
-四、实验代码实现
-cipher_text = "NUFECMWBYUJMBIQGYNBYWIXY"
-# 遍历所有可能的密钥 k (1~25)
-for k in range(1, 26):
-    plain_text = []
-    for c in cipher_text:
-        if c.isupper():
-            # 计算解密后的字符序号: (原序号 - k) 模 26
-            char_index = (ord(c) - ord('A') - k) % 26
-            plain_text.append(chr(char_index + ord('A')))
-        else:
-            plain_text.append(c)  # 非字母字符保持不变
-    # 输出当前密钥对应的解密结果
-    print(f"k={k}: {''.join(plain_text)}")
-五、实验结果与分析
-运行代码后，遍历密钥 k=1 到 k=25，得到所有解密结果。通过人工筛选，当 k=17 时，输出为有意义的英文句子：k=17: THECAESARCIPHERISUSEFUL
-即明文为： THECAESARCIPHERISUSEFUL （可拆分为  THE CAESAR CIPHER IS USEFUL ）。
+四、实验结果与分析
+运行代码后，遍历密钥 k=1 到 k=25，得到所有解密结果。通过人工筛选，当 k=20 时，输出为有意义的英文句子：
+ TALKISCHEAPSHOWMETHECODE 
+即明文为： TALKISCHEAPSHOWMETHECODE （可拆分为  TALK IS CHEAP SHOW ME THE CODE ）。
 结果分析：
 1. 凯撒密码密钥空间仅为 25，暴力破解在计算上完全可行，时间复杂度为 O(26n)（n 为密文长度）。
 2. 暴力破解依赖人工识别有效明文，若密文过短或无意义，可能无法准确判断正确密钥。
 3. 本实验验证了凯撒密码的脆弱性：在现代密码学中，该算法仅用于教学演示，不具备实际安全价值。
-六、实验总结
+五、实验总结
 本次实验通过 Python 实现了凯撒密码的暴力破解，成功还原了明文。实验表明：
 - 凯撒密码的移位逻辑简单，易于实现与破解。
 - 暴力破解是针对小密钥空间密码的有效攻击手段。
